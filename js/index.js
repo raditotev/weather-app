@@ -823,12 +823,9 @@ function getWeather(lat, lon) {
 
 $(document).ready(function() {     
   
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var lat = position.coords.latitude;
-      var lon = position.coords.longitude;
-      
-      getWeather(lat, lon);
-    });
-  }  
+  $.getJSON("http://ip-api.com/json/", function(json) {       
+    var lat = json.lat;
+    var lon = json.lon;
+    getWeather(lat, lon);
+  });
 });
